@@ -1,6 +1,6 @@
 # Featuremachine
 
-A clean TARGET_REPO prepared to work with an external AI Dev Agent. Product code lives here; the agent is released separately.
+A clean repository prepared to work with an external AI Dev Agent. Product code lives here; the agent is released separately.
 
 ## What lives where
 - `.ai/` — agent config, guardrails, roadmap, backlog, templates
