@@ -1,2 +1,2 @@
 # Featuremachine
-Features for a new project
+Features for a new project.
