@@ -1,0 +1,4 @@
+paths:
+  - "/.ai/roadmap/vision.md"
+  - "/.github/workflows/**"
+  - "/docs/**"

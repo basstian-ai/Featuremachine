@@ -1,0 +1,22 @@
+name: AI Dev Agent
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * 1-5"
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  run:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Agent (pinned)
+        uses: basstian-ai/ai-dev-agent@v1
+        with:
+          config: .ai/agent.yml
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
