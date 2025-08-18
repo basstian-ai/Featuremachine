@@ -1,0 +1,14 @@
+# Generic
+.DS_Store
+.env
+*.log
+node_modules/
+dist/
+build/
+coverage/
+.tmp/
+.cache/
+
+# Editors/OS
+.vscode/
+.idea/
