@@ -2,13 +2,17 @@ name: Checks
 on:
   pull_request:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Lint YAML
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: ".ai/*.yml .ai/**/*.yml .github/workflows/*.yml"
       - name: Placeholder lint
-        run: echo "TODO: add linter" && true
+        run: "echo 'TODO: add linter' && true"
       - name: Placeholder tests
-        run: echo "TODO: add tests" && true
+        run: "echo 'TODO: add tests' && true"
