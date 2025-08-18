@@ -3,10 +3,10 @@ mode: pr-only
 verbosity: normal
 
 queues:
-  tasks: ".ai/backlog/tasks.md"
-  bugs: ".ai/backlog/bugs.md"
+  tasks: '.ai/backlog/tasks.md'
+  bugs: '.ai/backlog/bugs.md'
 
-guardrails: ".ai/guardrails.yml"
+guardrails: '.ai/guardrails.yml'
 
 hints:
   packageManager: auto
