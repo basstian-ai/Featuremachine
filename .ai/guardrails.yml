@@ -1,3 +1,4 @@
+---
 allowedOps:
   - "docs:*"
   - "src:*:non-breaking"
