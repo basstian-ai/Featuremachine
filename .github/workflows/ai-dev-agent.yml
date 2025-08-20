@@ -1,3 +1,4 @@
+---
 name: AI Dev Agent
 on:
   workflow_dispatch:
