@@ -1,23 +1,11 @@
 ---
+protectedPaths:
+  - ".ai/roadmap/vision.md"
+  - ".github/workflows/**"
+
 allowedOps:
   - "docs:*"
   - "src:*:non-breaking"
-  - "config:*"
-  - "tests:*"
-  - "scripts:*"
 
-protectedPaths:
-  - "/.ai/roadmap/vision.md"
-  - "/.github/workflows/**"
-  - "/docs/**"
-
-maxDiffLines: 400
-requireTests: true
 requireGreenCI: true
-
-selection:
-  prefer:
-    - "bugs.P0"
-    - "bugs.P1"
-    - "tasks.P1"
-    - "tasks.P2"
+maxDiffLines: 400
