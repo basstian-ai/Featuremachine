@@ -1,3 +1,4 @@
-# IDs only; tokens via GitHub secrets.
-projectId: "YOUR_VERCEL_PROJECT_ID"
-teamId: "YOUR_VERCEL_TEAM_ID"
+---
+projectId: "${{ vars.VERCEL_PROJECT_ID }}"  # set in repo → Actions → Variables
+teamId: "${{ vars.VERCEL_TEAM_ID }}"        # set in repo → Actions → Variables
+promoteOnMerge: true
