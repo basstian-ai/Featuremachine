@@ -1,16 +1,17 @@
 ---
-repoName: Featuremachine
 mode: pr-only
-verbosity: normal
 
 queues:
-  tasks: ".ai/backlog/tasks.md"
-  bugs: ".ai/backlog/bugs.md"
+  tasks: .ai/backlog/tasks.md
+  bugs: .ai/backlog/bugs.md
 
-guardrails: ".ai/guardrails.yml"
+selection:
+  prefer: [bugs.P0, bugs.P1, tasks.P1, tasks.P2]
 
 hints:
-  packageManager: auto
-  framework: generic
-  testCommand: "echo 'TODO: add tests' && true"
-  lintCommand: "echo 'TODO: add linter' && true"
+  packageManager: npm
+  testCommand: npm test --silent || true
+  lintCommand: npm run lint --silent || true
+
+# Hard cap for total added+removed lines in an agent PR
+maxDiffLines: 400
