@@ -1,11 +1,11 @@
 ## Summary
 This PR was opened by the AI Dev Agent.
 
-- Implements: {{task_id}} — {{title}}
+- Implements: {{id}} — {{title}}
 
 ## Change
-- Minimal, safe diff.
+- Minimal, safe diff aligned with vision.
 
-## Checklist
-- [x] Builds locally (CI will confirm)
+## Checks
+- [x] Builds (CI)
 - [x] No breaking changes
