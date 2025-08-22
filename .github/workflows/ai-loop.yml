@@ -14,20 +14,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci || npm i
+
       - name: Agent sanity check
         run: |
           echo "config:" && ls -la .ai/agent.yml || true
           echo "vision:" && head -n 5 .ai/roadmap/vision.md || true
 
       - name: Run ai-dev-agent (full loop)
-        uses: basstian-ai/ai-dev-agent@v1.0.2   # pin to your working tag
+        uses: basstian-ai/ai-dev-agent@v1.0.2
         with:
           config: ${{ vars.AGENT_CONFIG_PATH || '.ai/agent.yml' }}
           max-diff-lines: ${{ vars.AGENT_MAX_DIFF_LINES || '400' }}
           repair-only: ${{ vars.AGENT_REPAIR_ONLY || 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}   # must be set in repo secrets
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}   # <-- set this in repo secrets
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
           VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
