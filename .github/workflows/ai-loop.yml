@@ -28,6 +28,11 @@ jobs:
           echo "config:" && ls -la .ai/agent.yml || true
           echo "vision:" && head -n 5 .ai/roadmap/vision.md || true
 
+      - name: Configure git identity
+        run: |
+          git config --global user.name "AI Dev Agent"
+          git config --global user.email "agent@basstian-ai.com"
+
       - name: Run ai-dev-agent (full loop)
         uses: basstian-ai/ai-dev-agent@v1.0.2
         with:
@@ -35,8 +40,11 @@ jobs:
           max-diff-lines: ${{ vars.AGENT_MAX_DIFF_LINES || '400' }}
           repair-only: ${{ vars.AGENT_REPAIR_ONLY || 'false' }}
         env:
+          # Required
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}   # <-- set this in repo secrets
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}             # for gh CLI inside the action
+          # LLM + Vercel
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
           VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
