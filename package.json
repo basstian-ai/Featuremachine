@@ -1,0 +1,23 @@
+{
+  "name": "featuremachine",
+  "version": "1.0.0",
+  "description": "A clean repository prepared to work with an external AI Dev Agent. Product code lives here; the agent is released separately.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "echo \"(no tests yet)\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}
