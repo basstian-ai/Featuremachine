@@ -1,2 +1,1 @@
-# Idea Funnel
-- [ ] IF-001 | Hypothesis: Improve onboarding time by X via ...
+# Suggestions (auto-generated)

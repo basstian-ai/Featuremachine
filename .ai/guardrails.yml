@@ -1,10 +1,13 @@
 protected:
   - path: ".github/workflows/**"
-  - path: ".ai/roadmap/**"
+  - path: ".ai/roadmap/vision.md"
 allow:
-  - path: "docs/**"
   - path: "pages/**"
   - path: "lib/**"
   - path: "src/**"
+  - path: ".ai/backlog/**"
+  - path: ".ai/roadmap/new.md"
 rules:
   - ci_must_be_green: true
+  - minimal_diffs: true
+  - always_buildable: true

@@ -1,2 +1,3 @@
 name: "AI Dev Agent"
-# minimal config; can be extended later
+mode: "pr-only"
+maxDiffLines: 400

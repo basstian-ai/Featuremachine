@@ -1,5 +1,0 @@
----
-labels:
-  pr: ["ai-agent", "automation"]
-reviewers: []        # add handles here to request review
-autoMerge: false     # the agent should NOT auto-merge PRs

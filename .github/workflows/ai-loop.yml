@@ -1,0 +1,26 @@
+name: AI Dev Agent Loop
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: "5 6 * * 1-5"  # weekdays 06:05 UTC
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run ai-dev-agent (full loop)
+        uses: basstian-ai/ai-dev-agent@v1.0.1   # <-- pin to your working tag
+        with:
+          config: ${{ vars.AGENT_CONFIG_PATH || '.ai/agent.yml' }}
+          max-diff-lines: ${{ vars.AGENT_MAX_DIFF_LINES || '400' }}
+          repair-only: ${{ vars.AGENT_REPAIR_ONLY || 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+          VERCEL_TEAM_ID: ${{ vars.VERCEL_TEAM_ID }}
