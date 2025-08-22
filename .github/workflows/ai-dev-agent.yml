@@ -11,6 +11,26 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+            - name: Fallback tiny change if agent is idle
+        run: |
+          set -e
+          if grep -q "\- \[ \] T-001" .ai/backlog/tasks.md; then
+            git checkout -b agent/t-001-logger
+            mkdir -p lib
+            cat > lib/logger.js <<'JS'
+export function log(msg){ console.log("[log]", msg) }
+JS
+            sed -i 's/- \[ \] T-001/- [x] T-001/' .ai/backlog/tasks.md
+            git config user.email "actions@github.com"
+            git config user.name "github-actions[bot]"
+            git add -A
+            git commit -m "feat: add tiny logger and close T-001"
+            git push -u origin agent/t-001-logger
+            gh pr create --base main --head agent/t-001-logger --title "AI Agent: T-001 tiny logger" --body "$(cat .ai/templates/pr-template.md | sed "s/{{task_id}}/T-001/;s/{{title}}/Add a tiny logger utility/")"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: basstian-ai/ai-dev-agent@v1
         with:
           config: ${{ vars.AGENT_CONFIG_PATH || '.ai/agent.yml' }}
