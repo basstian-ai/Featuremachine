@@ -29,7 +29,7 @@ jobs:
           git config --global user.email "agent@basstian-ai.com"
 
       - name: Run ai-dev-agent (full loop)
-        uses: basstian-ai/ai-dev-agent@v1.0.4  # <-- pin to your new tag
+        uses: basstian-ai/ai-dev-agent@v1.0.5  # <-- pin to your new tag
         with:
           config: ${{ vars.AGENT_CONFIG_PATH || '.ai/agent.yml' }}
           max-diff-lines: ${{ vars.AGENT_MAX_DIFF_LINES || '400' }}
