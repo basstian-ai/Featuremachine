@@ -46,21 +46,18 @@ jobs:
           else
             echo "No unchecked T-001 found; skipping fallback."
           fi
-
-      - uses: basstian-ai/ai-dev-agent@v1
+            - uses: basstian-ai/ai-dev-agent@v1
+        continue-on-error: true   # <-- add this line
         with:
           config: ${{ vars.AGENT_CONFIG_PATH || '.ai/agent.yml' }}
           max-diff-lines: ${{ vars.AGENT_MAX_DIFF_LINES || '400' }}
           repair-only: ${{ vars.AGENT_REPAIR_ONLY || 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Optional LLMs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Vercel integration (optional but recommended):
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
           VERCEL_TEAM_ID: ${{ vars.VERCEL_TEAM_ID }}
-          # (Optional) PAT if you need cross-repo:
           GH_PAT: ${{ secrets.GH_PAT }}
