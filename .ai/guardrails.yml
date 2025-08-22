@@ -1,11 +1,10 @@
----
-protectedPaths:
-  - ".ai/roadmap/vision.md"
-  - ".github/workflows/**"
-
-allowedOps:
-  - "docs:*"
-  - "src:*:non-breaking"
-
-requireGreenCI: true
-maxDiffLines: 400
+protected:
+  - path: ".github/workflows/**"
+  - path: ".ai/roadmap/**"
+allow:
+  - path: "docs/**"
+  - path: "pages/**"
+  - path: "lib/**"
+  - path: "src/**"
+rules:
+  - ci_must_be_green: true

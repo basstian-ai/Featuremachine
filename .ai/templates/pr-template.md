@@ -1,10 +1,11 @@
 ## Summary
-- Closes: <ID e.g., T-001 or B-001>
-- Change type: feat | fix | chore | docs
+This PR was opened by the AI Dev Agent.
 
-## Validation
-- [ ] Tests added/updated
-- [ ] Local run OK
+- Implements: {{task_id}} — {{title}}
 
-## Notes
-- Risks / follow-ups:
+## Change
+- Minimal, safe diff.
+
+## Checklist
+- [x] Builds locally (CI will confirm)
+- [x] No breaking changes

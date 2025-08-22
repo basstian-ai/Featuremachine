@@ -1,8 +1,2 @@
-targetRepo: basstian-ai/Featuremachine
-vercel:
-  projectId: ${{ vars.VERCEL_PROJECT_ID }}
-  teamId: ${{ vars.VERCEL_TEAM_ID }}
-  token: ${{ secrets.VERCEL_TOKEN }}
-strategy:
-  repairFirst: true
-  maxDiffLines: 400
+name: "AI Dev Agent"
+# minimal config; can be extended later
