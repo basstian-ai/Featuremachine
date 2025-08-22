@@ -1,15 +1,14 @@
 name: AI Dev Agent
 on:
-  workflow_dispatch:
+  workflow_dispatch: {}
   schedule:
-    - cron: "0 8 * * 1-5"
-
+    - cron: "0 8 * * 1-5" # weekdays 08:00 UTC
 jobs:
   run:
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: basstian-ai/ai-dev-agent@v1
@@ -18,17 +17,14 @@ jobs:
           max-diff-lines: ${{ vars.AGENT_MAX_DIFF_LINES || '400' }}
           repair-only: ${{ vars.AGENT_REPAIR_ONLY || 'false' }}
         env:
-          # Provided by GitHub automatically:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-          # Optional, only if used:
+          # Optional LLMs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-
+          # Vercel integration (optional but recommended):
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
-          VERCEL_TEAM_ID: ${{ vars.VERCEL_TEAM_ID }}   # if you use TEAM_ID instead of ORG_ID
-
-          # Advanced cross-repo writes (optional):
+          VERCEL_TEAM_ID: ${{ vars.VERCEL_TEAM_ID }}
+          # (Optional) PAT if you need cross-repo:
           GH_PAT: ${{ secrets.GH_PAT }}
