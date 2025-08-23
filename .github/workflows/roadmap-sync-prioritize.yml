@@ -1,0 +1,16 @@
+name: Roadmap – Sync & Prioritize
+on:
+  schedule: [{ cron: "10 6 * * *" }]
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: basstian-ai/ai-dev-agent@v1.0.6
+        with:
+          job: J3
+          dir: .
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN:   ${{ secrets.GITHUB_TOKEN }}
